@@ -45,8 +45,11 @@ public class Simon {
             playSound(i);
 
             //TODO: click button
+            buttons[i].setPressed(true);
 
             SystemClock.sleep(speed);    //sleep the system one second
+
+            buttons[i].setPressed(false);
         }
     }
 

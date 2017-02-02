@@ -33,12 +33,8 @@ public class MainActivity extends AppCompatActivity {
             R.raw.sounds_blue,
             R.raw.game_over
     };
-    Button[] buttons = {
-            buttonGreen,
-            buttonRed,
-            buttonYellow,
-            buttonBlue
-    };
+    Button[] buttons;
+
     private static final int GREEN_BUTTON = 0;
     private static final int RED_BUTTON = 1;
     private static final int YELLOW_BUTTON = 2;
@@ -56,7 +52,14 @@ public class MainActivity extends AppCompatActivity {
         buttonBlue = (Button) findViewById(R.id.activity_main___blue_button);
         buttonStart = (Button) findViewById(R.id.activity_main___start_button);
 
-        enabledButons();
+        buttons = new Button[]{
+                buttonGreen,
+                buttonRed,
+                buttonYellow,
+                buttonBlue
+        };
+
+        disabledButons();
         simon = new Simon(MainActivity.this,sounds, buttons);
 
 
@@ -125,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void enabledButons() {
+    private void disabledButons() {
         buttonGreen.setEnabled(false);
         buttonRed.setEnabled(false);
         buttonYellow.setEnabled(false);
@@ -143,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 myMoves = new LinkedList<Integer>();
             }
         }else{
-            enabledButons();
+            disabledButons();
             simon.playSound(GAME_OVER);
             simon.reset();
             myMoves = new LinkedList<Integer>();

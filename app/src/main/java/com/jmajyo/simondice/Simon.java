@@ -2,6 +2,8 @@ package com.jmajyo.simondice;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Button;
@@ -19,6 +21,15 @@ public class Simon {
     private MediaPlayer mpSound;
     private Context context;                //weakify
     private int speed=2000;
+    private int maxLevel;
+
+    public int getMaxLevel() {
+        return maxLevel;
+    }
+
+    public void setMaxLevel(int maxLevel) {
+        this.maxLevel = maxLevel;
+    }
 
     public void setSpeed(int speed) {
         this.speed = speed;
@@ -39,27 +50,40 @@ public class Simon {
     }
 
     private void playMoves() {
-        for (Integer i : moves) {
-            Log.d("Simon","move " + i);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (Integer i : moves) {
+                    Log.d("Simon","move " + i);
+                    pressButton(buttons[i], true);
 
-            playSound(i);
+                    playSound(i);
 
-            //TODO: click button
-            buttons[i].setPressed(true);
-
-            SystemClock.sleep(speed);    //sleep the system one second
-
-            buttons[i].setPressed(false);
-        }
+                    pressButton(buttons[i], false);
+                }
+            }
+        }).start();
+    }
+    //Función que hace que se lance en el hilo principal.
+    //Es necesaria porque solo el hilo principal puede tocar la interfaz
+    private void pressButton(final Button b, final boolean state){
+        MainThread.run(new Runnable() {
+            @Override
+            public void run() {
+                b.setPressed(state);
+            }
+        });
     }
 
-    public void playSound(Integer i) {
+    public synchronized void playSound(Integer i) {
         if (mpSound != null){
             mpSound.release();
             mpSound = null;
         }
         mpSound = MediaPlayer.create(context, sounds[i]);
         mpSound.start();
+
+        SystemClock.sleep(speed);    //sleep the system one second
     }
 
     public void reset(){
@@ -87,11 +111,23 @@ public class Simon {
                 break;
             }
         }
-        SystemClock.sleep(ONE_SECOND);
+        //SystemClock.sleep(ONE_SECOND);
         return check;
     }
 
     public int getLevel() {
         return level;
+    }
+}
+
+class MainThread {
+    public static void run(final Runnable runnable) {
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                runnable.run();
+            }
+        });
     }
 }

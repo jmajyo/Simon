@@ -52,4 +52,49 @@
         android:text="Start"
         android:textStyle="bold|italic"
         android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/activity_main___text_level_name"
+        android:layout_width="105dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:text="Current level:"
+        android:textColor="#DDDDDD"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="17sp"/>
+    <TextView
+        android:id="@+id/activity_main___text_level"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/activity_main___text_level_name"
+        android:textColor="#DDDDDD"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        tools:text="1"/>
+
+    <TextView
+        android:id="@+id/activity_main___text_max_level_name"
+        android:layout_width="125dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:text="Maximum level:"
+        android:layout_marginLeft="20dp"
+        android:textColor="#DDDDDD"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_toRightOf="@id/activity_main___text_level"/>
+    <TextView
+        android:id="@+id/activity_main___text_max_level"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/activity_main___text_max_level_name"
+        android:textColor="#DDDDDD"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        tools:text="1"/>
 </RelativeLayout>

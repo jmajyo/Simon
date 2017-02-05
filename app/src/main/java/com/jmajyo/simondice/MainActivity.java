@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
             if(simon.getLevel()>simon.getMaxLevel())
             {
                 simon.setMaxLevel(simon.getLevel());
-                maxLevelText.setText(simon.getMaxLevel());
+                maxLevelText.setText("" + simon.getMaxLevel());
             }
             disabledButons();
             simon.playSound(GAME_OVER);

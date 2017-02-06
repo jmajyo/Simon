@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 levelText.setText("" + simon.getLevel());
                 myMoves = new LinkedList<Integer>();
             }
-        }else{
+        }else{//GAME OVER
             if(simon.getLevel()>simon.getMaxLevel())
             {
                 simon.setMaxLevel(simon.getLevel());

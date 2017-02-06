@@ -3,15 +3,15 @@
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<item android:title="Noob"
+<item android:title="@string/noob"
     android:id="@+id/menu_main_action___noob"
     app:showAsAction="never"/>
 <item
-    android:title="Medio pensionista"
+    android:title="@string/medium"
     android:id="@+id/menu_main_action___medium"
     app:showAsAction="never" />
 <item
-    android:title="Puto amo"
+    android:title="@string/professional"
     android:id="@+id/menu_main_action___pro"
     app:showAsAction="never" />
 

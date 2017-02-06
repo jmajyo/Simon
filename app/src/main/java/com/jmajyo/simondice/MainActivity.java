@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 buttonBlue
         };
 
+        levelText.setText("0");
         disabledButons();
         simon = new Simon(MainActivity.this,sounds, buttons);
         //levelText.setText("" + simon.getLevel());

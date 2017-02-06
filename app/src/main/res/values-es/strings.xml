@@ -3,4 +3,7 @@
     <string name="start">Empezar</string>
     <string name="current_level">Nivel actual:</string>
     <string name="maximum_level">Nivel máximo:</string>
+    <string name="professional">Profesional</string>
+    <string name="medium">Medio</string>
+    <string name="noob">Principiante</string>
 </resources>
